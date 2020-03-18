@@ -20,7 +20,7 @@ class Task:
 
     def add_figure(self, type, key_symbols, key_symbols_text, possible_symbols, possible_symbols_text):
         figure = dict()
-        figure[type] = type  # todo refactor as figure_type
+        figure[type] = type
         figure[key_symbols] = key_symbols
         figure[key_symbols_text] = key_symbols_text  # для отображения при проверке и других обращениях
         figure[possible_symbols] = possible_symbols
@@ -33,7 +33,7 @@ class TaskFigure:
     global possible_figures
 
     def __init__(self, type, key_symbols, key_symbols_text, possible_symbols, possible_symbols_text):
-        self.type = type  # todo refactor as figure_type
+        self.type = type
         self.key_symbols = key_symbols
         self.key_symbols_text = key_symbols_text  # для отображения при проверке и других обращениях
         self.possible_symbols = possible_symbols
@@ -50,9 +50,9 @@ class Task:
         self.name = name
         self.text = text
         self.highlighted_text = highlighted_text
-        self.figuresList = figures_list
+        self.figures_list = figures_list
 
-    def __str__(self):  # Отладочное
+    def __str__(self):
         n = (self.name + "\n")
         n += self.text + "\n"
         counter = 1
