@@ -6,13 +6,13 @@ class Task:
         self.name = name
         self.text = text
         self.highlighted_text = highlighted_text
-        self.figuresList = figures_list
+        self.figures_list = figures_list
 
     def __str__(self):
         n = (self.name + "\n")
         n += self.text + "\n"
         counter = 1
-        for i in self.figuresList:
+        for i in self.figures_list:
             n += (str(counter) + " ")
             n += (str(i) + "\n")
             counter += 1
@@ -25,7 +25,7 @@ class Task:
         figure[key_symbols_text] = key_symbols_text  # для отображения при проверке и других обращениях
         figure[possible_symbols] = possible_symbols
         figure[possible_symbols_text] = possible_symbols_text
-        self.possible_figures.append(figure)
+        self.figures_list(figure)
 
 
 # after
