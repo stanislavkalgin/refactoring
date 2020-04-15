@@ -1,5 +1,4 @@
-# before
-class AddTaskForm(QtWidgets.QDialog):
+class TaskOperatingWindow(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Dialog()
@@ -33,21 +32,6 @@ class AddTaskForm(QtWidgets.QDialog):
         self.ui.button_add_task.clicked.connect(self.add_task)
         self.ui.figures_buttons_list.itemClicked.connect(self.set_figure_type)
         self.ui.button_delete_last_figure.clicked.connect(self.delete_last_figure)
-
-    def accept_text(self):
-        self.task_text = self.ui.task_text.toHtml()
-        self.ui.task_text.setReadOnly(1)
-        # UI activation
-        self.ui.figures_buttons_list.setEnabled(True)
-        self.ui.button_delete_last_figure.setEnabled(True)
-        self.ui.button_add_figure.setEnabled(True)
-        self.ui.button_add_task.setEnabled(True)
-        self.ui.button_add_possible_words.setEnabled(True)
-        self.ui.button_add_key_words.setEnabled(True)
-        self.ui.task_name_input.setEnabled(True)
-        self.ui.figures_counter_label.setEnabled(True)
-
-        self.ui.button_accept_text.setEnabled(False)
 
     def add_key_words(self):
         cursor = self.ui.task_text.textCursor()
@@ -96,6 +80,26 @@ class AddTaskForm(QtWidgets.QDialog):
         # for i in self.task_figures_list:
         #     print(i)
 
+
+class AddTaskForm(TaskOperatingWindow):
+    def __init__(self):
+        super().__init__()
+
+    def accept_text(self):
+        self.task_text = self.ui.task_text.toHtml()
+        self.ui.task_text.setReadOnly(1)
+        # UI activation
+        self.ui.figures_buttons_list.setEnabled(True)
+        self.ui.button_delete_last_figure.setEnabled(True)
+        self.ui.button_add_figure.setEnabled(True)
+        self.ui.button_add_task.setEnabled(True)
+        self.ui.button_add_possible_words.setEnabled(True)
+        self.ui.button_add_key_words.setEnabled(True)
+        self.ui.task_name_input.setEnabled(True)
+        self.ui.figures_counter_label.setEnabled(True)
+
+        self.ui.button_accept_text.setEnabled(False)
+
     def delete_last_figure(self):
         deleted_figure = self.task_figures_list.pop()
         start = deleted_figure.key_symbols[0]
@@ -123,7 +127,7 @@ class AddTaskForm(QtWidgets.QDialog):
         sql_stuff.insert_as_teacher(query_add_task, insert)
 
 
-class ModifyTaskForm(AddTaskForm):
+class ModifyTaskForm(TaskOperatingWindow):
     def __init__(self, task):
         super().__init__()
 
