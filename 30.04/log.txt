@@ -1,0 +1,1 @@
+AuthenticationException(401, 'security_exception', 'failed to authenticate user [elastic]')
