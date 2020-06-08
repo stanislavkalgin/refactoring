@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class Interface(LibraryInterface):
+class Interface(InterfaceLibrary):
     def __init__(self):
         super.__init__()
 
